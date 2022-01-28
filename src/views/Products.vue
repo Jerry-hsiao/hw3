@@ -408,7 +408,7 @@ export default {
           this.getProducts();
         })
         .catch((error) => {
-          alert(error.data.message);
+          alert(error.response.data.message);
           this.$router.push("/");
         });
     },
@@ -419,7 +419,7 @@ export default {
           this.products = Object.values(res.data.products).map((item) => item);
         })
         .catch((error) => {
-          alert(error.data.message);
+          alert(error.response.data.message);
         });
     },
     updateProduct() {
@@ -436,7 +436,7 @@ export default {
           this.getProducts();
         })
         .catch((err) => {
-          alert(err.data.message);
+          alert(err.response.data.message);
         });
     },
     deleteProduct() {
@@ -447,7 +447,7 @@ export default {
           $("#deleteModal").modal("hide");
         })
         .catch((er) => {
-          alert(er.data.message);
+          alert(er.response.data.message);
         });
     },
     openModal(control, item) {

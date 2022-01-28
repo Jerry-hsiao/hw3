@@ -63,7 +63,8 @@ export default {
           this.$router.push("/products");
         })
         .catch((error) => {
-          alert(error.data.message);
+          console.dir(error);
+          alert(error.response.data.message);
         });
     },
   },

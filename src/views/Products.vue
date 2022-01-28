@@ -403,13 +403,13 @@ export default {
         .post(`${this.url}/api/user/check`)
         .then((res) => {
           if (!res.data.success) {
-            this.$router.push("/login");
+            this.$router.push("/");
           }
           this.getProducts();
         })
         .catch((error) => {
-          console.dir(error);
-          this.$router.push("/login");
+          alert(error.data.message);
+          this.$router.push("/");
         });
     },
     getProducts() {
@@ -419,7 +419,7 @@ export default {
           this.products = Object.values(res.data.products).map((item) => item);
         })
         .catch((error) => {
-          console.dir(error);
+          alert(error.data.message);
         });
     },
     updateProduct() {
@@ -436,19 +436,18 @@ export default {
           this.getProducts();
         })
         .catch((err) => {
-          console.dir(err);
+          alert(err.data.message);
         });
     },
     deleteProduct() {
       this.axios
         .delete(`${this.url}/api/${this.path}/admin/product/${this.productId}`)
         .then((res) => {
-          console.log(res);
           this.getProducts();
           $("#deleteModal").modal("hide");
         })
         .catch((er) => {
-          console.dir(er);
+          alert(er.data.message);
         });
     },
     openModal(control, item) {

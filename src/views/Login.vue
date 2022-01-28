@@ -58,13 +58,12 @@ export default {
       this.axios
         .post(`${this.url}/admin/signin`, this.user)
         .then((res) => {
-          console.log(res);
           const { token, expired } = res.data;
           document.cookie = `hexToken=${token}; expires=${new Date(expired)};`;
           this.$router.push("/products");
         })
         .catch((error) => {
-          console.dir(error);
+          alert(error.data.message);
         });
     },
   },

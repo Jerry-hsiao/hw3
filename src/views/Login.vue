@@ -54,7 +54,6 @@ export default {
   },
   methods: {
     login() {
-      console.log(this.user);
       this.axios
         .post(`${this.url}/admin/signin`, this.user)
         .then((res) => {
@@ -63,7 +62,6 @@ export default {
           this.$router.push("/products");
         })
         .catch((error) => {
-          console.dir(error);
           alert(error.response.data.message);
         });
     },
